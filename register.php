@@ -7,18 +7,16 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <link href="Normalize.css" rel="stylesheet">
     
     
     <style>
     body{
      text-align: center;
-    background: #314159;
-    }
-        
-    h1{
-     color:white;
-    font-size:90px;
-    
+    background: url("http://40.media.tumblr.com/ceed02c850efe262a248979866e128b2/tumblr_mmtxa4tyj41qmxxrdo1_500.jpg");
+    background-size: cover;
+        background-attachment: fixed;
     }
     
     a{
@@ -40,22 +38,93 @@
         
     }
     
+    #header{
+     background:black;
+    text-align: left;
+    color:white;
+    padding:10px 20px;
+    }
     
+      h1{
+    position: absolute;
+    top:-20px;
+    left:0px;
+ 
+    padding:10px;
+    background:black;
+    
+    color:white;
+    font-size:50px;
+    
+    }
+        
+    #formcontainer{
+        top: 200px;
+        margin:200px auto;
+        background:black;
+        width: 600px;
+        padding:20px 0px;
+        border: 2px dashed black;
+    }
+    input{
+     padding:20px;
+    margin:30px;
+    }
+    select{
+    margin:30px;
+    width:450px;
+    }
     </style>
     
 </head>
 <body>
-
-
+    
+    <h1>_ARTIFEX_Registration</h1>
+<div id="formcontainer">
 <form method='post' action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type='text' placeholder='username' name='username' size='30'><br>
-    <input type='text' placeholder='password' name='pass' size='30'><br>
-    <input type='text' placeholder='confirm password' name='conf_pass' size='30'><br>
-    <input type='text' placeholder='email' name='email' size='30'><br>
+    <input type='text' placeholder='Last Name' name='lastname' size='50'><br>
+    
+    <input type='text' placeholder='First Name' name='firstname' size='50'><br>
+    
+    <input type='text' placeholder='Username' name='username' size='50'><br>
+    
+    <input type='password' placeholder='Password' name='pass' size='50'><br>
+    
+    <input type='password' placeholder='Confirm Password' name='conf_pass' size='50'><br>
+    
+<select name="occupation" id="occupation">
+    <option>Select Occupation</option>
+    <option value="model">Model</option>
+    <option value="designer">Designer</option>
+    <option value="publication">Publication</option>
+    <option value="photographer">Photographer</option>
+    <option value="stylist">Stylist</option>
+    <option value="other">Other</option>
+<input type='text' placeholder='Enter Occupation' name='otheroccupation' size='50' id="other"><br>
+</select>
+    
+    <input type='text' placeholder='Email' name='email' size='50'><br>
+    
     <input type='submit' value='Register'>
     </form>
     
-
+</div>
+    
+    <script type="text/javascript">       
+$('document').ready($("#other").hide());
+        
+$("#occupation").on('change', function(){
+   
+    if( $(this).val()==="other"){
+        $("#other").show();
+        }
+        else{
+        $("#other").hide();
+        }
+    
+});   
+    </script>
+    
 <?php
 
 
@@ -66,36 +135,45 @@
     
  $db = $m->jdpersonal;
  $collection = $db->log;
-    
-        $username = $_POST['username'];
-            if(empty($username)){
-             die("Username is empty<br>");   
+
+$lastname = $_POST['lastname'];
+$firstname = $_POST['firstname'];
+$username = $_POST['username'];
+$pass = $_POST['pass'];
+$conf_pass = $_POST['conf_pass'];
+$occupation = $_POST['occupation'];
+$otheroccupation = "null";
+$email = $_POST['email'];
+
+
+if(strcmp($occupation, "other") == 0){
+$otheroccupation = $_POST['otheroccupation'];
+$occupation = strtolower($otheroccupation);
+}
+
+
+
+ if(empty($username) || empty($pass) || empty($lastname) || empty($firstname) || empty($username) || empty($email) || empty($conf_pass) || strcmp($occupation, "Select Occupation") == 0 || empty($otheroccupation)){
+             die("Leave No Empty Fields");   
             }
-        $pass = $_POST['pass'];
-            if(empty($pass)){
-             die("Password is empty<br>");   
-            }
-        $conf_pass = $_POST['conf_pass'];
+       
+        
             if(strcmp($conf_pass, $pass) !== 0){
              die("Passwords Do Not Match!<br>");   
             }
-        $email = $_POST['email'];
-            if(empty($email)){
-             die("Email is empty<br>");   
-            }
-
         
+           
 
-        
-          require_once('savesessioninfo.php');
+
+ require_once('savesessioninfo.php');
         
         if(ssi($username, $email)){
             
-        $document = array("username" => $username, "password" => $pass, "email" => $email);
+        $document = array("username" => $username, "password" => $pass, "email" => $email, "lastname" => $lastname, "firstname" => $firstname, "occupation" => $occupation);
         
     $collection->insert($document);
             
-         header("Location: /SubLite/loggedin.php");
+         header("Location: /zfiles/loggedin.php");
          exit();  
         }
         
@@ -103,7 +181,7 @@
             echo "Error saving your information. Please try again.";
         }
         
-        
+   
       
     
     }

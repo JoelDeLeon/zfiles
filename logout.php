@@ -9,7 +9,9 @@
     <style>
     body{
      text-align: center;
-    background: #314159;
+    background: url("http://33.media.tumblr.com/6f39661205770d551388cec0157b0cc5/tumblr_nbr6oaUvmy1qeereko1_400.gif");
+    background-size: cover;
+    
     }
         
     h1{
@@ -30,27 +32,48 @@
     
     .button{
     width:200px;
-    background:#7298CE;
+    background:black;
     border-radius: 2px;
     padding:10px;
-    margin: 20px auto;
+    margin: 20px auto; 
+    position:fixed;
+    bottom:20px;
+    right:0px;
+    }
         
+    .button:hover{
+     background:white;
+    color:black;
     }
     
+        h1{
+    position: fixed;
+    top:-20px;
+    left:0px;
+    width:300px;
+    padding:10px;
+    background:black;
+    color:white;
+    font-size:50px;
+    }
+   
     
     </style>
     
 </head>
 <body>
+    
+    <h1>_ARTIFEX_</h1>
+    
     <?php
 
 unset($_SESSION["username"]);
 unset($_SESSION["email"]);
 
 
-echo "<h1>You have successfully logged out!</h1><br>";
 
-    echo "<div class='button'><a class='bttn' href=login.php>Login</a></div>";
+
+    echo "<a class='bttn' href=login.php><div class='button'>Login</div></a>";
 
 
 ?>

@@ -5,18 +5,16 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     
+    <link href="Normalize.css" rel="stylesheet">
     
     <style>
     body{
      text-align: center;
-    background: #314159;
+    background: url("http://40.media.tumblr.com/ceed02c850efe262a248979866e128b2/tumblr_mmtxa4tyj41qmxxrdo1_500.jpg");
+    background-size:cover;
+   font-family: helvetica, sans-serif;
     }
         
-    h1{
-     color:white;
-    font-size:90px;
-    
-    }
     
     a{
      text-decoration: none; 
@@ -37,18 +35,46 @@
         
     }
     
+    input{
+    padding:20px;
+    margin:30px;
+    }
+        
+        
+    h1{
+    position: fixed;
+    top:-20px;
+    left:0px;
+    padding:10px;
+    background:black;
+    
+    color:white;
+    font-size:50px;
+    
+    }
+    form{
+     position:relative;
+     top:200px;
+        
+    }
+    subbttn{
+       border: 1px solid #006;
+    background: #9cf; 
+    }
+    
     
     </style>
     
 </head>
 <body>
 
+    <h1>_ARTIFEX_Login</h1>
 
 <form method='post' action="<?php echo $_SERVER['PHP_SELF'];?>">
-    <input type='text' placeholder='username' name='username' size='30'><br>
-    <input type='text' placeholder='password' name='pass' size='30'><br>
+    <input type='text' placeholder='Username' name='username' size='30'><br>
+    <input type='password' placeholder='Password' name='pass' size='30'><br>
    
-    <input type='submit' value='Login'>
+    <input type='submit' value='Login' class="subbttn">
     </form>
     
     
@@ -81,7 +107,7 @@
             if(strcmp($userpass, $pass) == 0){
                 require_once('savesessioninfo.php');
                 ssi($username, $pass);
-                header("Location:/SubLite/loggedin.php");
+                header("Location:/zfiles/loggedin.php");
                 exit();
             }
             else{
