@@ -89,11 +89,13 @@
     
         $username = $_POST['username'];
             if(empty($username)){
-             echo "Empty Username<br>";   
+             echo "<script> alert('Empty Username');</script>";  
+     die();     
             }
         $pass = $_POST['pass'];
             if(empty($pass)){
-             echo "Empty Password<br>";   
+              echo "<script> alert('Empty Password');</script>";  
+     die();   
             }
         
         $user = $collection->findOne(array("username" => $username));
@@ -112,7 +114,8 @@
             }
             else{
                
-             echo "Invalid Password!";   
+             echo "<script> alert('Invalid Password');</script>";  
+     die();  
             
             }
         }

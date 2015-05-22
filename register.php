@@ -151,18 +151,20 @@ $otheroccupation = $_POST['otheroccupation'];
 $occupation = strtolower($otheroccupation);
 }
 
+$vararray = array($lastname,$firstname,$username,$pass,$conf_pass,$occupation,$otheroccupation,$email);
 
-
- if(empty($username) || empty($pass) || empty($lastname) || empty($firstname) || empty($username) || empty($email) || empty($conf_pass) || strcmp($occupation, "Select Occupation") == 0 || empty($otheroccupation)){
-             die("Leave No Empty Fields");   
+ if(in_array("", $vararray) || strcmp($occupation, "Select Occupation") == 0){
+            echo "<script> alert('Leave No Empty Fields');</script>";  
+     die();   
             }
        
-        
-            if(strcmp($conf_pass, $pass) !== 0){
-             die("Passwords Do Not Match!<br>");   
+
+else if(strcmp($conf_pass, $pass) !== 0){
+            echo "<script> alert('Passwords Do Not Match!');</script>";
+            die();  
             }
         
-           
+           else{
 
 
  require_once('savesessioninfo.php');
@@ -184,6 +186,9 @@ $occupation = strtolower($otheroccupation);
    
       
     
+    }
+        
+        
     }
  
  

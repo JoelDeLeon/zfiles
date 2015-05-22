@@ -174,7 +174,9 @@ echo $username; ?>
         
         <div class="content">
             <ul>
+            <li><a href="newlisting.php">New Listing</a></li>
             <li><a href="editprofile.php">Edit Profile</a></li>
+                
             <li><a href="logout.php">Logout</a></li>
                 
             </ul>

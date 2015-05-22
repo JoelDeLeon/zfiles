@@ -33,7 +33,7 @@
     .button{
     width:200px;
     background:black;
-    border-radius: 2px;
+   
     padding:10px;
     margin: 20px auto; 
     position:fixed;

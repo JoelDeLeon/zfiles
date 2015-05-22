@@ -8,11 +8,16 @@
     <style>
     body{
      text-align: center;
-    background: url("http://40.media.tumblr.com/ceed02c850efe262a248979866e128b2/tumblr_mmtxa4tyj41qmxxrdo1_500.jpg");
+    background: url("https://33.media.tumblr.com/1646f21877cfc86119bdf159fea2a223/tumblr_nopwp9qFiB1u17yx1o1_500.gif");
     background-size:cover;
    font-family: helvetica, sans-serif;
     }
         
+        
+        h1{
+     color:white;
+    font-size:90px;
+    }
     
     a{
      text-decoration: none; 
@@ -25,50 +30,34 @@
     }
     
     .button{
-    width:200px;
-    background:#7298CE;
-    border-radius: 2px;
+    background:black;
     padding:10px;
-    margin: 20px auto;
+    margin: 20px auto; 
+    position:fixed;
+    bottom:20px;
+    right:0px;
+    }
         
+    .button:hover{
+     background:white;
+    color:black;
     }
     
-    input{
-    padding:20px;
-    margin:30px;
-    }
-        
-        
-    h1{
+        h1{
     position: fixed;
     top:-20px;
     left:0px;
+    
     padding:10px;
     background:black;
-    
     color:white;
     font-size:50px;
-    
     }
-    form{
-     position:relative;
-     top:200px;
-        
-    }
-    subbttn{
-       border: 1px solid #006;
-    background: #9cf; 
-    }
-    
-    
     </style>
+    </head>
     
-</head>
-<body>
-
-    <h1>The_ARTIFEX_</h1>
-    
-    
-</body>
-    
+    <body>
+    <h1>New_Listing_Logged_!</h1>
+    <a class='bttn' href=loggedin.php><div class='button'>Back To Artifex</div></a>
+    </body>
 </html>
