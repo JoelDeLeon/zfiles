@@ -70,10 +70,21 @@
      padding:20px;
     margin:30px;
     }
-    select{
+   
+    select {
     margin:30px;
     width:450px;
-    }
+    border: 1px solid #111;
+    background: white;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius:0px;
+    height: 34px;
+  //  -webkit-appearance: none;
+   // -moz-appearance: none;
+  //  appearance: none;
+}
     </style>
     
 </head>

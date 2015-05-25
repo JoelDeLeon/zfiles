@@ -125,7 +125,7 @@ foreach ($cursor as $doc) {
         Location: 
         <input type='text' name='city' size='20' placeholder="City">
         <input type='text' name='state' size='20' placeholder="State">
-  <textarea form="moreinfo" name="paragraph_text" cols="50" rows="10" placeholder='Description' name='conf_pass'></textarea><br>       
+  <textarea form="moreinfo" name="paragraph_text" cols="50" rows="10" placeholder='Description' name='description'></textarea><br>       
         
      <input type='submit' value='Register'>
     </form>
@@ -154,6 +154,7 @@ $endmonth=$_POST['endmonth'];
 $endyear=$_POST['endyear'];
 $city=$_POST['city'];
 $state=$_POST['state'];
+$descripion=$_POST['description'];
         
 $vararray = array("startday"=>$startday,"startmonth"=>$startmonth,"startyear"=>$startyear,"endday"=>$endday,"endmonth"=>$endmonth,"endyear"=>$endyear);
 
@@ -185,8 +186,13 @@ if(strlen($startyear) < 4 || strlen($endyear) < 4){
 
 else{
     
-    $vararray["city"] = $city;
-    $vararray["state"] = $state;
+    $vararray["city"] = strtolower($city);
+    $vararray["state"] = strtolower($state);
+    $vararray["description"]=$description;
+    $vararray["username"]=$username;
+    $vararray["name"]="$firstname $lastname";
+    $vararray["email"]=$email;
+    $vararray["occupation"]=strtolower($occupation);
      $artifex->insert($vararray);
     
     

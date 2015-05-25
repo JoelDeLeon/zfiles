@@ -48,6 +48,9 @@
     text-align: left;
     color:white;
     padding:10px 20px;
+    position:fixed;
+    width:100%;
+    z-index:5;
     }
         
    
@@ -63,7 +66,7 @@
       
         color:black;
         padding:90px 20px;
-         background: url("http://33.media.tumblr.com/8c74f92db467fd7edeb21f1de45cc61f/tumblr_ngwittyQz41qdejcbo1_500.gif");
+         background: url("https://40.media.tumblr.com/34c2a9c0ad208c94bea1a944fc0c1e27/tumblr_nm1vxtXq1z1rpgpe2o1_1280.jpg");
     background-attachment: fixed;
     background-size:cover;
     }
@@ -118,12 +121,13 @@
      margin:0px; 
     }
     
-    #usermenu{
+     #usermenu{
      position:absolute;
     right:30px;
     top:12px;
     width:150px;
     background:black;
+    margin-right:20px;
     
     }
     ul{
@@ -157,11 +161,32 @@
      background:yellow;  
     color:black;
     }
+        
+    select {
+  
+    
+    border: 1px solid #111;
+    background: white;
+    padding: 22px ;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius:0px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+    input{
+        
+        margin:30px;
+        padding:20px;
+        
+    }
+        
     </style>
     
 </head>
 <body>
-    <div id="header"><h1>_ARTIFEX_
+    <div id="header"><h1><a href="index.php">_ARTIFEX_</a>
         </h1>
     
     <div id="usermenu">
@@ -182,7 +207,25 @@ echo $username; ?>
             </ul>
         </div>
     </div>
+   
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
         
+    $keyword = urlencode($_POST["search"]);
+    
+     header("Location:/zfiles/listingquery.php?keyword=$keyword");
+  
+    
+    
+      
+    
+}
+
+
+
+
+?>
+    
         
 <script>
         $("#usermenu").click(function () {
@@ -215,11 +258,29 @@ echo $username; ?>
         <h2>Search The <span style="color:yellow">Artifex</span></h2>
         
         <form method='post' action="<?php echo $_SERVER['PHP_SELF'];?>">
+    <!--<select name="qtype">
+<option value="null">Search Type</option>
+ <option value="Name">Name</option>
+ <option value="Occupation">Occupation</option>
+ <option value="Date">Date</option>
+            
+</select>-->
     <input type='text' placeholder='Who are you looking for?' name='search' size='30' id='srchbar'><br>
+    <input type="submit" name="Search">
         </form>
     
     
     </div>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
     <div id="suggestionsholder">
         
     <div class="suggest">
